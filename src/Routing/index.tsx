@@ -1,15 +1,27 @@
 import { ReactElement } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Home from '../pages/Home'
+import ProtectedRoute from '../components/ProtectedRoute'
+import RedirectIfLogged from '../components/RedirectIfLogged'
+import { routes } from './routes'
 
 const Routing = (): ReactElement => {
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/dashboard' element={<Home />} />
-      <Route path='/new-operation' element={<Home />} />
-      <Route path='/operations' element={<Home />} />
-      <Route path='/settings' element={<Home />} />
+      {
+        routes.map(({ element, path, isPrivate }) => {
+          return (
+            <Route
+              key={path}
+              path={path}
+              element={
+              isPrivate
+                ? <ProtectedRoute> {element} </ProtectedRoute>
+                : <RedirectIfLogged> {element} </RedirectIfLogged>
+              }
+            />
+          )
+        })
+      }
     </Routes>
   )
 }
