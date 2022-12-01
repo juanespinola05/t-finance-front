@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .app {
-  @apply h-screen grid place-content-center overflow-hidden bg-lightBg
+  @apply min-h-screen grid place-content-center overflow-hidden bg-lightBg
 }
 
 .mobile-only {
