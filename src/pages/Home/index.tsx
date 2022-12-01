@@ -2,12 +2,8 @@ import { ReactElement } from 'react'
 
 const Home = (): ReactElement => {
   return (
-    <div className='font-roboto h-[18em] bg-blue text-center text-white grid place-content-center'>
-      <div className='flex flex-col'>
-        <p className='text-lg font-light'>Balance</p>
-        <p className='text-5xl font-bold mb-6'>$3,050</p>
-        <p className='font-light'> &lt; May 2022 &gt; </p>
-      </div>
+    <div className='p-4'>
+      <h1>Bienvenido a T-Finance</h1>
     </div>
   )
 }
