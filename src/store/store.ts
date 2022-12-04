@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux'
 import userReducer from './slices/auth.slice'
+import balanceReducer from './slices/balance.slice'
 
 export const store = configureStore({
   reducer: {
-    auth: userReducer
+    auth: userReducer,
+    balance: balanceReducer
   }
 })
 
