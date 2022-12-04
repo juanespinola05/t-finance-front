@@ -1,0 +1,3 @@
+.button {
+  @apply bg-blue text-center text-white font-bold inline-block rounded-xl h-12
+}
