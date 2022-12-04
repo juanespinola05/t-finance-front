@@ -18,7 +18,8 @@ module.exports = {
         hero: 'url(hero.jpg)'
       },
       boxShadow: {
-        home: '1px 1px 44px -12px rgba(255,255,255,0.85) inset;'
+        home: '1px 1px 44px -12px rgba(255,255,255,0.85) inset;',
+        input: '0px 2px 1px rgba(0, 0, 0, 0.12);'
       }
     }
   },
