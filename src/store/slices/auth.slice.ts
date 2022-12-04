@@ -1,8 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { registerUser } from '../actions/auth.actions'
 
 interface User {
-  id: number
   token: string
 }
 
@@ -14,10 +13,7 @@ export interface AuthState {
 }
 
 const INITIAL_STATE: AuthState = {
-  userInfo: {
-    id: 123,
-    token: 'asdadad'
-  },
+  userInfo: null,
   loading: true,
   error: null,
   success: false
@@ -26,7 +22,18 @@ const INITIAL_STATE: AuthState = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState: INITIAL_STATE,
-  reducers: {},
+  reducers: {
+    setToken: (state, action: PayloadAction<{ token: string | null }>) => {
+      const { payload: { token } } = action
+      state.loading = false
+      if (typeof token === 'string') {
+        state.userInfo = {
+          token: action.payload.token as string
+        }
+      }
+      return state
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(registerUser.pending, (state) => {
       state.loading = true
@@ -44,3 +51,4 @@ export const authSlice = createSlice({
 })
 
 export default authSlice.reducer
+export const { setToken } = authSlice.actions

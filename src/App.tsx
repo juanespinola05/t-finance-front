@@ -1,14 +1,21 @@
-import { ReactElement } from 'react'
+import { ReactElement, useEffect } from 'react'
+import Loading from './components/Loading'
 import Navbar from './components/Navbar'
+import useAuth from './hooks/useAuth'
 import Routing from './Routing'
 
 function App (): ReactElement {
+  const { getToken, auth: { loading } } = useAuth()
+
+  useEffect(() => {
+    getToken()
+  }, [])
+  if (loading) return <Loading />
+
   return (
     <div className='app'>
       <main className='mobile-only template'>
-        <div>
-          <Routing />
-        </div>
+        <Routing />
         <Navbar />
       </main>
     </div>
