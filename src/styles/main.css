@@ -7,7 +7,7 @@
 }
 
 .mobile-only {
-  @apply min-[412px]:aspect-[9/16] min-h-[700px] max-[412px]:min-h-screen max-[412px]:w-screen max-[412px]:rounded-none shadow-lg rounded-2xl overflow-hidden bg-white block relative;
+  @apply max-w-sm min-[412px]:aspect-[9/16] min-h-[700px] max-[412px]:min-h-screen max-[412px]:w-screen max-[412px]:rounded-none shadow-lg rounded-2xl overflow-hidden bg-white block relative;
 }
 
 .template {
