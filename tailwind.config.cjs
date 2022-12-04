@@ -13,6 +13,12 @@ module.exports = {
       },
       fontFamily: {
         roboto: 'Roboto'
+      },
+      backgroundImage: {
+        hero: 'url(hero.jpg)'
+      },
+      boxShadow: {
+        home: '1px 1px 44px -12px rgba(255,255,255,0.85) inset;'
       }
     }
   },
