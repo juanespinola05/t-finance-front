@@ -14,6 +14,7 @@ function App (): ReactElement {
 
   return (
     <div className='app'>
+      <div className='wave' />
       <main className='mobile-only template'>
         <Routing />
         <Navbar />

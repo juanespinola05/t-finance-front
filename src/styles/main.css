@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .app {
-  @apply min-h-screen grid place-content-center overflow-hidden bg-lightBg
+  @apply min-h-screen grid place-content-center overflow-hidden bg-cover relative
 }
 
 .mobile-only {
@@ -11,10 +11,22 @@
 }
 
 .template {
-  @apply grid grid-cols-1 grid-rows-[auto_4rem]
+  @apply grid
 }
 
 /* todo: change thiss */
 .active > svg {
   @apply fill-blue
+}
+
+.wave {
+  @apply absolute h-[50%] w-full top-0 bg-blue
+}
+
+.wave::before {
+  @apply w-[55%] h-[109%] bg-white right-[-1.5%] top-[60%] content-[''] block absolute rounded-[100%_50%]
+}
+
+.wave::after {
+  @apply w-[55%] h-full bg-blue left-[-1.5%] top-[40%] content-[''] block absolute rounded-[100%_50%]
 }
