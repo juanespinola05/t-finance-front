@@ -1,13 +1,16 @@
 import { ReactElement } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 import ProtectedRoute from '../components/ProtectedRoute'
 import RedirectIfLogged from '../components/RedirectIfLogged'
 import { routes } from './routes'
 
 const Routing = (): ReactElement => {
+  const location = useLocation()
   return (
-    <Routes>
-      {
+    <AnimatePresence mode='wait'>
+      <Routes key={location.pathname} location={location}>
+        {
         routes.map(({ element, path, isPrivate }) => {
           return (
             <Route
@@ -22,7 +25,8 @@ const Routing = (): ReactElement => {
           )
         })
       }
-    </Routes>
+      </Routes>
+    </AnimatePresence>
   )
 }
 
