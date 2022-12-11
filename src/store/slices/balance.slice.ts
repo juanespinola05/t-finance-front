@@ -1,16 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { BalanceState, GeneralBalanceResponse } from '../../types/balance'
 import { getBalances } from '../actions/balance.actions'
-
-interface BalanceState {
-  loading: boolean
-  error: Error | null | string
-  balance: number
-  totalIncome: number
-  totalOutflow: number
-  month: string
-}
-
-interface GeneralBalanceApiReponse extends Pick<BalanceState, 'balance' | 'totalIncome' | 'totalOutflow'> {}
 
 const initialState: BalanceState = {
   loading: true,
@@ -25,25 +15,22 @@ const balanceSlice = createSlice({
   name: 'balance',
   initialState,
   reducers: {},
-  extraReducers: {
-    [getBalances.pending.toString()]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(getBalances.pending, (state) => {
       state.loading = true
       state.error = null
-    },
-    [getBalances.fulfilled.toString()]: (state, action: PayloadAction<GeneralBalanceApiReponse>) => {
-      const { balance, totalIncome, totalOutflow } = action.payload
-      state = {
-        ...state,
-        totalIncome,
-        totalOutflow,
-        balance
-      }
-    },
-    [getBalances.rejected.toString()]: (state, action: PayloadAction<{ name: string, message: string }>) => {
+    })
+    builder.addCase(getBalances.fulfilled, (state, action: PayloadAction<GeneralBalanceResponse>) => {
+      const { balance, income, outflow } = action.payload
+      state.loading = false
+      state.balance = balance
+      state.totalIncome = income
+      state.totalOutflow = outflow
+    })
+    builder.addCase(getBalances.rejected, (state, action) => {
       state.loading = false
       state.error = action.payload
-      console.log('errorrrr')
-    }
+    })
   }
 })
 
