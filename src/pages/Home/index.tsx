@@ -5,7 +5,7 @@ import AnimatedPage from '../../components/AnimatedPage'
 const Home = (): ReactElement => {
   return (
     <AnimatedPage>
-      <div className='p-4 bg-hero h-full bg-cover row-span-2 bg-[70%_center] shadow-home'>
+      <div className='p-4 bg-hero h-full bg-cover bg-[70%_center] shadow-home'>
         <div className='flex mt-8 gap-4 justify-center items-center'>
           <img
             src='/logo.png'
