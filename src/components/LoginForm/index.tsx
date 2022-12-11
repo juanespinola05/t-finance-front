@@ -1,25 +1,30 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { FC, ReactElement } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
+import { LoginInput } from '../../types/auth'
+import ErrorAlert from '../ErrorAlert'
 import Form from '../Form'
 import Input from '../Input'
-
-interface LoginInputs {
-  email: string
-  password: string
-}
+import Spinner from '../Loading/Spinner'
 
 const LoginForm: FC = (): ReactElement => {
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginInputs>()
+  const { auth: { loading, error }, login } = useAuth()
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginInput>()
 
-  const onSubmit: SubmitHandler<LoginInputs> = data => {
-    console.log(data)
+  const onSubmit: SubmitHandler<LoginInput> = data => {
+    login(data)
   }
 
   return (
     <>
-      {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <ErrorAlert error={error} />
+      <Form
+        className={loading ? 'opacity-30' : ''}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        {loading && <Spinner />}
         <div>
           <Input
             placeholder='example@email.com'
