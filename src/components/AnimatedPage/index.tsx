@@ -9,7 +9,12 @@ const animations = {
 
 const AnimatedPage: FC<PropsWithChildren> = ({ children }: PropsWithChildren): ReactElement => {
   return (
-    <motion.div variants={animations} animate='animate' initial='initial' exit='exit'>
+    <motion.div
+      variants={animations}
+      animate='animate'
+      initial='initial'
+      exit='exit'
+    >
       {children}
     </motion.div>
   )
