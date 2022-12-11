@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react'
-import MonthSwitcher from '../components/MonthSwitcher'
-import TotalAmount from '../components/TotalAmount'
-import { useAppSelector } from '../store/store'
+import MonthSwitcher from '../MonthSwitcher'
+import TotalAmount from '../TotalAmount'
+import { useAppSelector } from '../../store/store'
 
 const DashboardBanner: FC = (): ReactElement => {
   const { balance, totalIncome, totalOutflow } = useAppSelector(state => state.balance)
