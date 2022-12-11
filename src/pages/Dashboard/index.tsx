@@ -2,8 +2,7 @@ import { ReactElement } from 'react'
 import AnimatedPage from '../../components/AnimatedPage'
 import LoggedInLayout from '../../components/LoggedInLayout'
 import Navbar from '../../components/Navbar'
-
-import DashboardBanner from '../../DashboardBanner'
+import DashboardBanner from '../../components/DashboardBanner'
 
 const Dashboard = (): ReactElement => {
   return (
