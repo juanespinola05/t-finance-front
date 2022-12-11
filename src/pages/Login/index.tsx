@@ -7,8 +7,11 @@ import Text, { TextSizes } from '../../components/Text'
 import LoginForm from '../../components/LoginForm'
 
 const Login = (): ReactElement => {
-  const { auth: { userInfo } } = useAuth()
-  if (userInfo !== null) return <Navigate to='/dashboard' />
+  const { auth } = useAuth()
+  const { userInfo } = auth
+  if (userInfo !== null) {
+    return <Navigate to='/dashboard' />
+  }
 
   return (
     <AnimatedPage>
