@@ -7,7 +7,7 @@
 }
 
 .mobile-only {
-  @apply min-[460px]:aspect-[9/16] min-h-[700px] max-[460px]:min-h-screen max-[460px]:w-screen max-[460px]:rounded-none shadow-lg rounded-2xl overflow-hidden bg-white block relative;
+  @apply min-[460px]:max-w-sm min-[460px]:aspect-[9/16] min-h-[700px] max-[460px]:min-h-screen max-[460px]:w-screen max-[460px]:rounded-none shadow-lg rounded-2xl overflow-hidden bg-white block relative;
 }
 
 .template {
