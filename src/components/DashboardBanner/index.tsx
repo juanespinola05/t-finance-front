@@ -1,18 +1,34 @@
-import { FC, ReactElement } from 'react'
+import { FC, ReactElement, useEffect } from 'react'
 import MonthSwitcher from '../MonthSwitcher'
 import TotalAmount from '../TotalAmount'
-import { useAppSelector } from '../../store/store'
+import { useAppDispatch, useAppSelector } from '../../store/store'
 import Spinner from '../Loading/Spinner'
+import { getBalances } from '../../store/actions/balance.actions'
 
 const DashboardBanner: FC = (): ReactElement => {
-  const { balance, totalIncome, totalOutflow, loading } = useAppSelector(state => state.balance)
+  const dispatch = useAppDispatch()
+  const {
+    app: { period },
+    balance: {
+      balance,
+      totalIncome,
+      totalOutflow,
+      loading
+    }
+  } = useAppSelector(state => state)
+
+  useEffect(() => {
+    const promise = dispatch(getBalances())
+
+    return () => {
+      promise.abort()
+    }
+  }, [period])
 
   return (
-    <>
+    <div>
       {
-        loading && (
-          <Spinner />
-        )
+        loading && <Spinner />
       }
       <div className={loading ? 'blur-[1px]' : ''}>
         <div className='font-roboto h-[18em] bg-blue text-center text-white grid place-content-center'>
@@ -27,7 +43,7 @@ const DashboardBanner: FC = (): ReactElement => {
           <TotalAmount amount={totalOutflow} type='outflow' />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
