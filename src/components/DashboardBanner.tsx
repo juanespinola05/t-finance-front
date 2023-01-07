@@ -1,9 +1,9 @@
 import { FC, ReactElement, useEffect } from 'react'
-import MonthSwitcher from '../MonthSwitcher'
-import TotalAmount from '../TotalAmount'
-import { useAppDispatch, useAppSelector } from '../../store/store'
-import Spinner from '../Loading/Spinner'
-import { getBalances } from '../../store/actions/balance.actions'
+import MonthSwitcher from './MonthSwitcher'
+import TotalAmount from './TotalAmount'
+import { useAppDispatch, useAppSelector } from '../store/store'
+import Spinner from './Spinner'
+import { getBalances } from '../store/actions/balance.actions'
 
 const DashboardBanner: FC = (): ReactElement => {
   const dispatch = useAppDispatch()

@@ -2,12 +2,12 @@
 import { FC, ReactElement } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
-import { LoginInput } from '../../types/auth'
-import ErrorAlert from '../ErrorAlert'
-import Form from '../Form'
-import Input from '../Input'
-import Spinner from '../Loading/Spinner'
+import useAuth from '../hooks/useAuth'
+import { LoginInput } from '../types/auth'
+import ErrorAlert from './ErrorAlert'
+import Form from './Form'
+import Input from './Input'
+import Spinner from './Spinner'
 
 const LoginForm: FC = (): ReactElement => {
   const { auth: { loading, error }, login } = useAuth()

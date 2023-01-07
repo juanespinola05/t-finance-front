@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react'
-import Text, { TextSizes } from '../Text'
+import Text, { TextSizes } from './Text'
 import { MdOutlineNavigateNext } from 'react-icons/md'
-import useMonthSwitch from '../../hooks/useMonthSwitch'
+import useMonthSwitch from '../hooks/useMonthSwitch'
 
 const MonthSwitcher: FC = (): ReactElement => {
   const { period, switcher } = useMonthSwitch(2022, 'Dec')
