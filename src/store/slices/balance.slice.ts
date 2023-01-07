@@ -7,8 +7,7 @@ const initialState: BalanceState = {
   error: null,
   balance: 0,
   totalIncome: 0,
-  totalOutflow: 0,
-  month: 'may'
+  totalOutflow: 0
 }
 
 const balanceSlice = createSlice({

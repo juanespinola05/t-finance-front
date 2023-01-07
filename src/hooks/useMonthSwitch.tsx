@@ -1,14 +1,16 @@
-import { useState } from 'react'
+
+import { MONTH_NAMES } from '../constants/month'
+import { setPeriod } from '../store/slices/app.slice'
+import { useAppDispatch, useAppSelector } from '../store/store'
 import { Month, SwitcherParamsVariants, useMonthSwitchInterface } from '../types/month'
 
-const monthNames: Month[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
 const useMonthSwitch = (initialYear: number, initialMonth: Month): useMonthSwitchInterface => {
-  const [period, setPeriod] = useState({ month: initialMonth, year: initialYear })
+  const dispatch = useAppDispatch()
+  const { period } = useAppSelector((state) => state.app)
 
   const switcher = (type: SwitcherParamsVariants): void => {
     let { month, year } = period
-    let monthNumber = monthNames.indexOf(month)
+    let monthNumber = MONTH_NAMES.indexOf(month)
     if (type === 'next') {
       const isNextYear = monthNumber === 11
       monthNumber = isNextYear ? 0 : monthNumber + 1
@@ -18,7 +20,7 @@ const useMonthSwitch = (initialYear: number, initialMonth: Month): useMonthSwitc
       monthNumber = isPrevYear ? 11 : monthNumber - 1
       year = isPrevYear ? year - 1 : year
     }
-    setPeriod({ month: monthNames[monthNumber], year })
+    dispatch(setPeriod({ month: MONTH_NAMES[monthNumber], year }))
   }
 
   return {
