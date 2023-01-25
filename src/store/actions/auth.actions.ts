@@ -6,9 +6,14 @@ import { removeError, setError } from '../slices/auth.slice'
 
 const service = new AuthService()
 
+// todo: take this to utils and use it in every action
 const getErrorMessage = (error: unknown): string | unknown => {
   if (error instanceof AxiosError) {
-    return error.response?.data.message
+    if (error.message === 'Network Error') {
+      return 'Service not available, try again later'
+    } else {
+      return error.response?.data.message
+    }
   }
   return error
 }
@@ -44,7 +49,7 @@ export const loginUser = createAsyncThunk('@auth/login', async (args: LoginInput
       setTimeout(() => {
         thunkAPI.dispatch(removeError())
       }, 5000)
-    }
+    } else console.log(error)
     return thunkAPI.rejectWithValue(message)
   }
 })

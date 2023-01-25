@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef, InputHTMLAttributes, ReactElement, RefAttributes } from 'react'
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form'
-import InvalidInputText from '../InvalidInputText'
+import InvalidInputText from './InvalidInputText'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLInputElement> {
   register?: UseFormRegisterReturn

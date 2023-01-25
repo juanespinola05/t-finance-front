@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren, ReactElement } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import Alert from '../Alert'
+import Alert from './Alert'
 import { BiErrorCircle } from 'react-icons/bi'
 
 interface ErrorAlertProps {

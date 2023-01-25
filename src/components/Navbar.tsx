@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
-import useAuth from '../../hooks/useAuth'
-import { routes } from '../../Routing/routes'
-import NavItem from '../NavItem'
+import useAuth from '../hooks/useAuth'
+import { routes } from '../Routing/routes'
+import NavItem from './NavItem'
 
 const Navbar = (): ReactElement | null => {
   const { auth: { userInfo } } = useAuth()

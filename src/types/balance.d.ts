@@ -12,5 +12,4 @@ export interface BalanceState {
   balance: number
   totalIncome: number
   totalOutflow: number
-  month: string
 }
