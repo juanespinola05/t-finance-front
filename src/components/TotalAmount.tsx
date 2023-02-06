@@ -3,7 +3,7 @@ import { VscTriangleUp } from 'react-icons/vsc'
 
 interface TotalAmountProps {
   type: 'income' | 'outflow'
-  amount: number
+  amount: number | string
 }
 
 const TotalAmount: FC<TotalAmountProps> = ({ type, amount = 0 }: TotalAmountProps): ReactElement => {
