@@ -30,3 +30,8 @@
 .wave::after {
   @apply w-[55%] h-full bg-blue left-[-1.5%] top-[40%] content-[''] block absolute rounded-[100%_50%]
 }
+
+/* ? input radio buttons selectio styles */
+.input-selection:checked + label {
+  @apply bg-blue text-white border-blue
+}
