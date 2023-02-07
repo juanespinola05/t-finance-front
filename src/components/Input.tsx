@@ -14,7 +14,7 @@ const Input = forwardRef(
       <>
         <input
           ref={ref}
-          className='h-12 w-80 pl-4 rounded-xl bg-gray-100 shadow-input'
+          className='h-12 w-80 px-4 rounded-xl bg-gray-100 shadow-input'
           {...props}
         />
         {
