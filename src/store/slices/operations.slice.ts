@@ -1,17 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Operation, OperationsState } from '../../types/operation'
-import { getAllOperations } from '../actions/operations.actions'
+import { Operation, OperationCreatedFromApi, OperationsState } from '../../types/operation'
+import { createOperation, getAllOperations, updateOperation } from '../actions/operations.actions'
 
 const initialState: OperationsState = {
   operations: [],
-  loading: true,
-  error: null
+  loading: false,
+  error: null,
+  success: false
 }
 
 const operationsSlice = createSlice({
   name: 'operations',
   initialState,
-  reducers: {},
+  reducers: {
+    setSuccess: (state) => {
+      state.success = true
+      return state
+    },
+    removeSucess: (state) => {
+      state.success = false
+      return state
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(getAllOperations.pending, (state) => {
       state.loading = true
@@ -25,7 +35,34 @@ const operationsSlice = createSlice({
       state.loading = false
       state.error = action.payload
     })
+    builder.addCase(createOperation.pending, (state) => {
+      state.loading = true
+      state.error = null
+    })
+    builder.addCase(createOperation.fulfilled, (state, action: PayloadAction<OperationCreatedFromApi>) => {
+      state.loading = false
+    })
+    builder.addCase(createOperation.rejected, (state, action) => {
+      state.loading = false
+      state.error = action.payload
+    })
+    builder.addCase(updateOperation.pending, (state) => {
+      state.loading = true
+      state.error = null
+      state.loading = false
+    })
+    builder.addCase(updateOperation.fulfilled, (state, action: PayloadAction<Partial<Operation>>) => {
+      const operationIndex = state.operations.findIndex(o => o.id === action.payload.id)
+      state.operations[operationIndex] = { ...state.operations[operationIndex], ...action.payload }
+      state.loading = false
+    })
+    builder.addCase(updateOperation.rejected, (state, action) => {
+      state.loading = false
+      state.error = action.payload
+      state.loading = false
+    })
   }
 })
 
 export default operationsSlice.reducer
+export const { removeSucess, setSuccess } = operationsSlice.actions
