@@ -31,9 +31,12 @@ const LimitDashboard: FC = (): ReactElement => {
       <div className='basis-[45%] grid place-items-center p-2'>
         <CircularProgressbar
           strokeWidth={18}
+          text={percentage >= 80 ? '!' : ''}
           styles={buildStyles({
             pathColor,
-            trailColor: '#eee'
+            trailColor: '#eee',
+            textColor: '#d10f0f',
+            textSize: 24
           })}
           value={percentage}
         />
