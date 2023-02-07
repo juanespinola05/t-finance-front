@@ -1,7 +1,6 @@
 import { ReactElement } from 'react'
 import AnimatedPage from '../../components/AnimatedPage'
 import LoggedInLayout from '../../components/LoggedInLayout'
-import Navbar from '../../components/Navbar'
 import DashboardBanner from '../../components/DashboardBanner'
 import LimitDashboard from '../../components/LimitDashboard'
 
@@ -13,7 +12,6 @@ const Dashboard = (): ReactElement => {
           <DashboardBanner />
           <LimitDashboard />
         </div>
-        <Navbar />
       </LoggedInLayout>
     </AnimatedPage>
   )

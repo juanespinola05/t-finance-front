@@ -2,7 +2,6 @@ import { ReactElement, useEffect } from 'react'
 import AnimatedPage from '../../components/AnimatedPage'
 import ListOfOperations from '../../components/ListOfOperations'
 import LoggedInLayout from '../../components/LoggedInLayout'
-import Navbar from '../../components/Navbar'
 import Spinner from '../../components/Spinner'
 import { MONTH_NAMES } from '../../constants/month'
 import { getAllOperations } from '../../store/actions/operations.actions'
@@ -39,7 +38,6 @@ const Operations = (): ReactElement => {
           }
           <ListOfOperations operations={operations} />
         </div>
-        <Navbar />
       </LoggedInLayout>
     </AnimatedPage>
   )

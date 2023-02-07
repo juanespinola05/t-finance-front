@@ -1,7 +1,6 @@
 import { FC, ReactElement } from 'react'
 import AnimatedPage from '../../components/AnimatedPage'
 import LoggedInLayout from '../../components/LoggedInLayout'
-import Navbar from '../../components/Navbar'
 import OperationForm from '../../components/OperationForm'
 
 const NewOperation: FC = (): ReactElement => {
@@ -16,7 +15,6 @@ const NewOperation: FC = (): ReactElement => {
             <OperationForm />
           </div>
         </div>
-        <Navbar />
       </LoggedInLayout>
     </AnimatedPage>
   )
