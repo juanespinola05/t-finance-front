@@ -6,6 +6,7 @@ import { BsGrid } from 'react-icons/bs'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { TbChartPie, TbArrowsDownUp } from 'react-icons/tb'
+import Operations from '../pages/Operations'
 
 export const routes = [
   {
@@ -41,7 +42,7 @@ export const routes = [
     icon: () => <TbArrowsDownUp className='text-customGray text-2xl' />,
     render: true,
     isPrivate: true,
-    element: <h1>Operations</h1>
+    element: <Operations />
   },
   {
     path: '/settings',
