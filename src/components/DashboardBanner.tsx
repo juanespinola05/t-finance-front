@@ -28,9 +28,13 @@ const DashboardBanner: FC = (): ReactElement => {
   return (
     <div>
       {
-        loading && <Spinner />
+        loading && (
+          <div className='absolute left-0 top-0 bottom-16 right-0 m-auto z-10 backdrop-blur-[2px]'>
+            <Spinner />
+          </div>
+        )
       }
-      <div className={`${loading ? 'blur-[1px]' : ''} relative mb-14`}>
+      <div className='relative mb-14'>
         <div className='font-roboto h-[18em] bg-blue text-center text-white grid place-content-center'>
           <div className='flex flex-col'>
             <p className='text-lg font-light'>Balance</p>
