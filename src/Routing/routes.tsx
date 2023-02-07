@@ -7,6 +7,7 @@ import { AiOutlinePlus } from 'react-icons/ai'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { TbChartPie, TbArrowsDownUp } from 'react-icons/tb'
 import Operations from '../pages/Operations'
+import NewOperation from '../pages/NewOperation'
 
 export const routes = [
   {
@@ -35,7 +36,7 @@ export const routes = [
     icon: () => <AiOutlinePlus className='fill-customGray text-5xl' />,
     render: true,
     isPrivate: true,
-    element: <h1>New Operation</h1>
+    element: <NewOperation />
   },
   {
     path: '/operations',
