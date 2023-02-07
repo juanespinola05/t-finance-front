@@ -30,7 +30,7 @@ const DashboardBanner: FC = (): ReactElement => {
       {
         loading && <Spinner />
       }
-      <div className={loading ? 'blur-[1px]' : ''}>
+      <div className={`${loading ? 'blur-[1px]' : ''} relative mb-14`}>
         <div className='font-roboto h-[18em] bg-blue text-center text-white grid place-content-center'>
           <div className='flex flex-col'>
             <p className='text-lg font-light'>Balance</p>
@@ -38,7 +38,7 @@ const DashboardBanner: FC = (): ReactElement => {
             <MonthSwitcher />
           </div>
         </div>
-        <div className='flex justify-around relative h-20 rounded-2xl w-[90%] m-auto top-[-40px] bg-white'>
+        <div className='flex justify-around absolute h-20 rounded-2xl w-[90%] left-0 right-0 mx-auto bottom-[-40px] bg-white'>
           <TotalAmount amount={formatCurrency(totalIncome)} type='income' />
           <TotalAmount amount={formatCurrency(totalOutflow)} type='outflow' />
         </div>
