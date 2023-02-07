@@ -8,8 +8,7 @@ import { formatCurrency } from '../utils/intl'
 const LimitDashboard: FC = (): ReactElement => {
   const { amount, outflowBalance } = useAppSelector(state => state.limit)
   const dispatch = useAppDispatch()
-  // const percentage = (outflowBalance * -1) * 100 / amount
-  const percentage = 70
+  const percentage = (outflowBalance * -1) * 100 / amount
   const greenColorPercentage = Math.ceil((100 - percentage) * 2.55)
   const pathColor = `rgb(255, ${greenColorPercentage}, 35)`
 
