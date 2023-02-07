@@ -3,12 +3,14 @@ import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux'
 import userReducer from './slices/auth.slice'
 import balanceReducer from './slices/balance.slice'
 import appReducer from './slices/app.slice'
+import limitReducer from './slices/limit.slice'
 
 export const store = configureStore({
   reducer: {
     auth: userReducer,
     balance: balanceReducer,
-    app: appReducer
+    app: appReducer,
+    limit: limitReducer
   }
 })
 
