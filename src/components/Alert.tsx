@@ -8,7 +8,7 @@ const Alert: FC<PropsWithChildren> = ({ children }: PropsWithChildren): ReactEle
       initial={{ x: 100 }}
       animate={{ x: 0 }}
       exit={{ x: 400 }}
-      className='pl-4 flex gap-2 items-center w-80 h-12 text-gray-100 rounded-xl bg-gray-900 absolute top-2 right-2 z-50'
+      className='pl-4 pr-2 py-2 flex gap-2 items-center w-80 min-h-[48px] text-gray-100 rounded-xl bg-gray-900 absolute top-2 right-2 z-50'
     >
       {children}
     </motion.div>,
