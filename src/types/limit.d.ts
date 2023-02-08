@@ -12,3 +12,11 @@ export interface LimitStateFromApi {
   ok: boolean
   state: Limit
 }
+
+export interface LimitFromApi {
+  id: number
+  userId: number
+  amount: number
+  createdAt: Date
+  updatedAt: Date
+}
