@@ -27,6 +27,7 @@ const LoginForm: FC = (): ReactElement => {
         {loading && <Spinner />}
         <div>
           <Input
+            className='w-80 mx-auto'
             placeholder='example@email.com'
             fieldError={errors.email}
             errorMessage='Valid email is required'
@@ -35,6 +36,7 @@ const LoginForm: FC = (): ReactElement => {
         </div>
         <div>
           <Input
+            className='w-80 mx-auto'
             placeholder='•••••••••••'
             type='password'
             fieldError={errors.password}
