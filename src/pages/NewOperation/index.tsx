@@ -7,13 +7,9 @@ const NewOperation: FC = (): ReactElement => {
   return (
     <AnimatedPage>
       <LoggedInLayout>
-        <div className='bg-white'>
-          <div className='border-gray-100 border-solid border-b-2 h-16 bg-white grid place-content-center'>
-            <h1 className='text-xl text-gray-800'>Create new operation</h1>
-          </div>
-          <div>
-            <OperationForm />
-          </div>
+        <div className='bg-white flex flex-col justify-center items-center gap-6'>
+          <h1 className='text-xl text-gray-800'>Create new operation</h1>
+          <OperationForm />
         </div>
       </LoggedInLayout>
     </AnimatedPage>

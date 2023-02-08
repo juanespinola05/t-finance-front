@@ -54,7 +54,7 @@ const OperationForm: FC<IProps> = ({ operation }): ReactElement => {
       <ErrorAlert error={error} />
       <Form
         onSubmit={handleSubmit(onSubmit)}
-        className={`w-max mt-16 mx-auto ${loading ? 'opacity-30' : ''}`}
+        className={`w-max ${loading ? 'opacity-30' : ''}`}
       >
         {loading && <Spinner />}
         <div>
