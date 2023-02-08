@@ -1,5 +1,6 @@
 import { FC, ReactElement } from 'react'
 import AnimatedPage from '../../components/AnimatedPage'
+import LimitChangeChart from '../../components/LimitChangeChart'
 import LoggedInLayout from '../../components/LoggedInLayout'
 
 const Settings: FC = (): ReactElement => {
@@ -20,10 +21,8 @@ const Settings: FC = (): ReactElement => {
             </div>
           </div>
           <div className='p-4'>
-            <h3 className='text-lg'>Profile information</h3>
-            <div>
-              <h4>Limit</h4>
-            </div>
+            <h3 className='text-lg font-bold border-b-2  border-gray-200'>Profile information</h3>
+            <LimitChangeChart />
           </div>
         </div>
       </LoggedInLayout>
