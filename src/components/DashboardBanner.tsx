@@ -35,7 +35,7 @@ const DashboardBanner: FC = (): ReactElement => {
         )
       }
       <div className='relative mb-14'>
-        <div className='font-roboto h-[18em] bg-blue text-center text-white grid place-content-center'>
+        <div className='font-roboto h-[18em] bg-red-600 text-center text-white grid place-content-center'>
           <div className='flex flex-col'>
             <p className='text-lg font-light'>Balance</p>
             <p className='text-5xl font-bold mb-6'>${formatCurrency(totalOutflow + totalIncome) ?? '0'}</p>
