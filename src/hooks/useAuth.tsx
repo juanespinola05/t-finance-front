@@ -1,12 +1,14 @@
-import { loginUser } from '../store/actions/auth.actions'
-import { AuthState, setToken } from '../store/slices/auth.slice'
+import { loginUser, signupUser } from '../store/actions/auth.actions'
+import { AuthState, logout, setToken } from '../store/slices/auth.slice'
 import { useAppDispatch, useAppSelector } from '../store/store'
-import { LoginInput } from '../types/auth'
+import { LoginInput, SignUpInput } from '../types/auth'
 
 interface useAuthInterface {
   auth: AuthState
   getToken: Function
   login: Function
+  logOut: Function
+  signUp: Function
 }
 
 const useAuth = (): useAuthInterface => {
@@ -22,10 +24,24 @@ const useAuth = (): useAuthInterface => {
     dispatch(setToken({ token }))
   }
 
+  const logOut = (): void => {
+    if (auth.userInfo !== null) {
+      localStorage.removeItem('token')
+      dispatch(logout())
+    }
+  }
+
+  const signUp = async (data: SignUpInput): Promise<any> => {
+    const promise = await dispatch(signupUser(data))
+    return promise
+  }
+
   return {
     auth,
     getToken,
-    login
+    login,
+    logOut,
+    signUp
   }
 }
 

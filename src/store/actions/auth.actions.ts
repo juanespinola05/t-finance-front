@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError, AxiosResponse } from 'axios'
+import api from '../../services/api'
 import AuthService from '../../services/auth.service'
-import { LoginInput, LoginResponse } from '../../types/auth'
-import { removeError, setError } from '../slices/auth.slice'
+import { LoginInput, LoginResponse, SignUpInput } from '../../types/auth'
+import { removeError, reset, setError } from '../slices/auth.slice'
 
 const service = new AuthService()
 
@@ -18,19 +19,20 @@ const getErrorMessage = (error: unknown): string | unknown => {
   return error
 }
 
-export const registerUser = createAsyncThunk('@auth/register', async (args, { rejectWithValue }) => {
+export const signupUser = createAsyncThunk<any, SignUpInput>('@auth/signup', async (data, thunkAPI) => {
   try {
-    // make request to backend
-    await fetch('/api/user/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(args)
+    const response = await api.post('/auth/register', data, {
+      signal: thunkAPI.signal
     })
+    setTimeout(() => {
+      thunkAPI.dispatch(reset())
+    }, 4000)
+    return thunkAPI.fulfillWithValue(response.data)
   } catch (error: any) {
-    // return custom error message from API if any
-    return getErrorMessage(error)
+    setTimeout(() => {
+      thunkAPI.dispatch(removeError())
+    }, 5000)
+    return thunkAPI.rejectWithValue(error?.response?.data?.message ?? error.message)
   }
 })
 

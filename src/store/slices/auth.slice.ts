@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { loginUser, registerUser } from '../actions/auth.actions'
+import { loginUser, signupUser } from '../actions/auth.actions'
 
 interface User {
   token: string
@@ -46,18 +46,32 @@ export const authSlice = createSlice({
         ...state,
         error: INITIAL_STATE.error
       }
+    },
+    logout: () => {
+      return {
+        ...INITIAL_STATE,
+        userInfo: null
+      }
+    },
+    reset: () => {
+      return {
+        ...INITIAL_STATE,
+        success: false,
+        loading: false,
+        error: null
+      }
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(registerUser.pending, (state) => {
+    builder.addCase(signupUser.pending, (state) => {
       state.loading = true
       state.error = null
     })
-    builder.addCase(registerUser.fulfilled, (state, { payload }) => {
+    builder.addCase(signupUser.fulfilled, (state, { payload }) => {
       state.loading = false
-      state.success = true // registration successful
+      state.success = true
     })
-    builder.addCase(registerUser.rejected, (state, { payload }) => {
+    builder.addCase(signupUser.rejected, (state, { payload }) => {
       state.loading = false
       state.error = payload
     })
@@ -78,4 +92,4 @@ export const authSlice = createSlice({
 })
 
 export default authSlice.reducer
-export const { setToken, setError, removeError } = authSlice.actions
+export const { setToken, setError, removeError, logout, reset } = authSlice.actions

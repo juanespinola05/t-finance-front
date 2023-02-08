@@ -3,18 +3,12 @@ import { Navigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 
 const Logout = (): ReactElement => {
-  const { auth } = useAuth()
-  console.log(auth)
+  const { auth, logOut } = useAuth()
 
-  if (auth.userInfo === null) {
-    return <Navigate to='/dashboard' />
+  if (auth.userInfo !== null) {
+    logOut()
   }
-
-  return (
-    <div>
-      <h1>Logout here bro</h1>
-    </div>
-  )
+  return <Navigate to='/' />
 }
 
 export default Logout
