@@ -2,55 +2,57 @@ import Dashboard from '../pages/Dashboard'
 import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Logout from '../pages/Logout'
-import { BsGrid } from 'react-icons/bs'
-import { AiOutlinePlus } from 'react-icons/ai'
-import { IoSettingsOutline } from 'react-icons/io5'
-import { TbChartPie, TbArrowsDownUp } from 'react-icons/tb'
+import { BsFillBarChartFill, BsPlusLg } from 'react-icons/bs'
+import { AiFillHome } from 'react-icons/ai'
+import { IoSettingsOutline, IoSettingsSharp } from 'react-icons/io5'
+import { FaList } from 'react-icons/fa'
 import Operations from '../pages/Operations'
 import NewOperation from '../pages/NewOperation'
+import Settings from '../pages/Setings'
+import Statistics from '../pages/Statistics'
 
 export const routes = [
   {
     path: '/',
-    icon: () => <TbChartPie className='text-customGray text-2xl' />,
+    icon: () => <AiFillHome className='text-customGray text-2xl' />,
     render: false,
     isPrivate: false,
     element: <Home />
   },
   {
     path: '/dashboard',
-    icon: () => <TbChartPie className='text-customGray text-2xl' />,
+    icon: () => <AiFillHome className='text-customGray text-2xl' />,
     render: true,
     isPrivate: true,
     element: <Dashboard />
   },
   {
     path: '/statistics',
-    icon: () => <BsGrid className='fill-customGray text-2xl' />,
+    icon: () => <BsFillBarChartFill className='fill-customGray text-2xl' />,
     render: true,
     isPrivate: true,
-    element: <h1>Statistics</h1>
+    element: <Statistics />
   },
   {
     path: '/new-operation',
-    icon: () => <AiOutlinePlus className='fill-customGray text-5xl' />,
+    icon: () => <BsPlusLg className='fill-customGray text-4xl' />,
     render: true,
     isPrivate: true,
     element: <NewOperation />
   },
   {
     path: '/operations',
-    icon: () => <TbArrowsDownUp className='text-customGray text-2xl' />,
+    icon: () => <FaList className='text-customGray text-2xl' />,
     render: true,
     isPrivate: true,
     element: <Operations />
   },
   {
     path: '/settings',
-    icon: () => <IoSettingsOutline className='text-customGray text-2xl' />,
+    icon: () => <IoSettingsSharp className='text-customGray text-2xl' />,
     render: true,
     isPrivate: true,
-    element: <h1>Settings</h1>
+    element: <Settings />
   },
   {
     path: '/login',
