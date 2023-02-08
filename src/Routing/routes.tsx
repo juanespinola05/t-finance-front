@@ -10,6 +10,7 @@ import Operations from '../pages/Operations'
 import NewOperation from '../pages/NewOperation'
 import Settings from '../pages/Setings'
 import Statistics from '../pages/Statistics'
+import SignUp from '../pages/SignUp'
 
 export const routes = [
   {
@@ -67,5 +68,12 @@ export const routes = [
     render: false,
     isPrivate: true,
     element: <Logout />
+  },
+  {
+    path: '/sign-up',
+    icon: () => <IoSettingsOutline className='text-customGray text-2xl' />,
+    render: false,
+    isPrivate: false,
+    element: <SignUp />
   }
 ]

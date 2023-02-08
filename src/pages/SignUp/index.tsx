@@ -1,36 +1,34 @@
-import { ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 import { Link, Navigate } from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
 import AnimatedPage from '../../components/AnimatedPage'
-import Title from '../../components/Title'
+import SignUpForm from '../../components/SignUpForm'
 import Text, { TextSizes } from '../../components/Text'
-import LoginForm from '../../components/LoginForm'
+import Title from '../../components/Title'
+import { useAppSelector } from '../../store/store'
 
-const Login = (): ReactElement => {
-  const { auth } = useAuth()
-  const { userInfo } = auth
+const SignUp: FC = (): ReactElement => {
+  const { userInfo } = useAppSelector(state => state.auth)
   if (userInfo !== null) {
     return <Navigate to='/dashboard' />
   }
-
   return (
     <AnimatedPage>
       <div className='p-4 text-center h-full'>
         <div className='grid place-content-center h-full'>
           <div>
             <Title className='my-3'>
-              Welcome back
+              Welcome!
             </Title>
             <Text size={TextSizes.tiny} className='mb-8'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet deserunt pariatur nobis, at minus reprehenderit
             </Text>
           </div>
           <div>
-            <LoginForm />
+            <SignUpForm />
             <div className='flex items-center justify-center gap-1 mt-10'>
               <span className='block w-20 bg-gradient-to-l from-blue to-blue-500 h-1' />
-              <Link to='/sign-up'>
-                Or Sign Up
+              <Link to='/login'>
+                Or Sign In
               </Link>
               <span className='block w-20 bg-gradient-to-r from-blue to-blue-500 h-1' />
             </div>
@@ -40,5 +38,4 @@ const Login = (): ReactElement => {
     </AnimatedPage>
   )
 }
-
-export default Login
+export default SignUp
