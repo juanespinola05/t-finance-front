@@ -8,7 +8,7 @@ interface IProps {
 
 const ListOfOperations: FC<IProps> = ({ operations }): ReactElement => {
   return (
-    <div className='flex flex-col gap-4 overflow-y-scroll max-h-[570px] px-4 py-4'>
+    <div className='flex flex-col gap-4 overflow-y-scroll min-[460px]:max-h-[570px] px-4 py-4'>
       {
         operations.map(operation => (
           <OperationCard key={operation.id} {...operation} />
