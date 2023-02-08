@@ -1,7 +1,8 @@
 import { FC, ReactElement, useEffect } from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-import { getLimit } from '../store/actions/limit.actions'
+import { Link } from 'react-router-dom'
+import { getLimitState } from '../store/actions/limit.actions'
 import { useAppDispatch, useAppSelector } from '../store/store'
 import { formatCurrency } from '../utils/intl'
 
@@ -13,7 +14,7 @@ const LimitDashboard: FC = (): ReactElement => {
   const pathColor = `rgb(255, ${greenColorPercentage}, 35)`
 
   useEffect(() => {
-    const action = dispatch(getLimit())
+    const action = dispatch(getLimitState())
 
     return () => {
       action.abort()
@@ -27,6 +28,9 @@ const LimitDashboard: FC = (): ReactElement => {
         <p className='text-xs text-gray-500'>
           {`Spend: $${formatCurrency(outflowBalance * -1)} / $${formatCurrency(amount)}`}
         </p>
+        <Link to='/settings' className='text-sm mt-2 underline text-blue'>
+          {amount === 0 ? 'Set a ' : 'Update your '}spending limit
+        </Link>
       </div>
       <div className='basis-[45%] grid place-items-center p-2'>
         <CircularProgressbar
