@@ -18,6 +18,7 @@ const DashboardBanner: FC = (): ReactElement => {
   } = useAppSelector(state => state)
 
   useEffect(() => {
+    if (totalIncome > 0) return
     const promise = dispatch(getBalances(period))
 
     return () => {
