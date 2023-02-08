@@ -9,12 +9,12 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement>, RefAttribute
 }
 
 const Input = forwardRef(
-  ({ fieldError, errorMessage, ...props }: InputProps, ref: ForwardedRef<HTMLInputElement>): ReactElement => {
+  ({ fieldError, errorMessage, className = '', ...props }: InputProps, ref: ForwardedRef<HTMLInputElement>): ReactElement => {
     return (
       <>
         <input
           ref={ref}
-          className='h-12 w-80 px-4 rounded-xl bg-gray-100 shadow-input'
+          className={`h-12 block px-4 rounded-xl bg-gray-100 shadow-input disabled:text-gray-500 ${className}`}
           {...props}
         />
         {
