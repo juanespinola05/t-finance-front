@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { SignUpResponse } from '../../types/auth'
 import { loginUser, signupUser } from '../actions/auth.actions'
 
 interface User {
@@ -67,8 +68,11 @@ export const authSlice = createSlice({
       state.loading = true
       state.error = null
     })
-    builder.addCase(signupUser.fulfilled, (state, { payload }) => {
+    builder.addCase(signupUser.fulfilled, (state, action: PayloadAction<SignUpResponse['token']>) => {
       state.loading = false
+      state.userInfo = {
+        token: action.payload
+      }
       state.success = true
     })
     builder.addCase(signupUser.rejected, (state, { payload }) => {

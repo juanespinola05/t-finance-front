@@ -13,3 +13,8 @@ export interface SignUpInput {
   email: string
   password: string
 }
+
+export interface SignUpResponse {
+  ok: boolean
+  token: string
+}

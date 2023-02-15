@@ -1,14 +1,17 @@
-import { ReactElement } from 'react'
+import { ReactElement, useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 
 const Logout = (): ReactElement => {
-  const { auth, logOut } = useAuth()
+  const { logOut } = useAuth()
 
-  if (auth.userInfo !== null) {
-    logOut()
+  const removeTokenAndDispatchLogout = async (): Promise<void> => {
+    await logOut()
   }
-  return <Navigate to='/' />
+  useEffect(() => {
+    void removeTokenAndDispatchLogout()
+  }, [])
+  return <Navigate to='/login' />
 }
 
 export default Logout

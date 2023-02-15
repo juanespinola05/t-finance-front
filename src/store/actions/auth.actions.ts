@@ -1,9 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError, AxiosResponse } from 'axios'
-import api from '../../services/api'
 import AuthService from '../../services/auth.service'
 import { LoginInput, LoginResponse, SignUpInput } from '../../types/auth'
-import { removeError, reset, setError } from '../slices/auth.slice'
+import { removeError, setError } from '../slices/auth.slice'
 
 const service = new AuthService()
 
@@ -21,13 +20,8 @@ const getErrorMessage = (error: unknown): string | unknown => {
 
 export const signupUser = createAsyncThunk<any, SignUpInput>('@auth/signup', async (data, thunkAPI) => {
   try {
-    const response = await api.post('/auth/register', data, {
-      signal: thunkAPI.signal
-    })
-    setTimeout(() => {
-      thunkAPI.dispatch(reset())
-    }, 4000)
-    return thunkAPI.fulfillWithValue(response.data)
+    const response = await service.signup(data)
+    return thunkAPI.fulfillWithValue(response.token)
   } catch (error: any) {
     setTimeout(() => {
       thunkAPI.dispatch(removeError())
