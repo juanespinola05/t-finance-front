@@ -13,7 +13,8 @@ export const store = configureStore({
     app: appReducer,
     limit: limitReducer,
     operations: operationsReducer
-  }
+  },
+  devTools: true
 })
 
 export const useAppDispatch: () => typeof store.dispatch = useDispatch
