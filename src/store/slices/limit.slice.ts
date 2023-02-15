@@ -32,8 +32,8 @@ const limitSlice = createSlice({
       state.error = null
     })
     builder.addCase(getLimit.fulfilled, (state, action: PayloadAction<LimitFromApi | undefined>) => {
-      const { amount } = action.payload as LimitFromApi
-      state.amount = amount
+      // todo: error a.p is null
+      state.amount = action.payload?.amount ?? 0
     })
     builder.addCase(getLimit.rejected, (state, action) => {
       state.loading = false
@@ -44,7 +44,7 @@ const limitSlice = createSlice({
       state.error = null
     })
     builder.addCase(createLimit.fulfilled, (state, action: PayloadAction<Limit['amount'] | undefined>) => {
-      state.amount = action.payload as Limit['amount']
+      state.amount = action.payload as Limit['amount'] ?? 0
     })
     builder.addCase(createLimit.rejected, (state, action) => {
       state.loading = false
