@@ -24,11 +24,9 @@ const useAuth = (): useAuthInterface => {
     dispatch(setToken({ token }))
   }
 
-  const logOut = (): void => {
-    if (auth.userInfo !== null) {
-      localStorage.removeItem('token')
-      dispatch(logout())
-    }
+  const logOut = async (): Promise<void> => {
+    localStorage.removeItem('token')
+    dispatch(logout())
   }
 
   const signUp = async (data: SignUpInput): Promise<any> => {
