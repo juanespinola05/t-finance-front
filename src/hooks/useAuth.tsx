@@ -1,3 +1,4 @@
+import { PayloadAction } from '@reduxjs/toolkit'
 import { loginUser, signupUser } from '../store/actions/auth.actions'
 import { AuthState, logout, setToken } from '../store/slices/auth.slice'
 import { useAppDispatch, useAppSelector } from '../store/store'
@@ -8,7 +9,7 @@ interface useAuthInterface {
   getToken: Function
   login: Function
   logOut: Function
-  signUp: Function
+  signUp: (data: SignUpInput) => Promise<PayloadAction<any>>
 }
 
 const useAuth = (): useAuthInterface => {
@@ -29,7 +30,7 @@ const useAuth = (): useAuthInterface => {
     dispatch(logout())
   }
 
-  const signUp = async (data: SignUpInput): Promise<any> => {
+  const signUp: useAuthInterface['signUp'] = async (data) => {
     const promise = await dispatch(signupUser(data))
     return promise
   }

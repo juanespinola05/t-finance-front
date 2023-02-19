@@ -16,8 +16,14 @@ const SignUpForm: FC = (): ReactElement => {
   const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<SignUpInput> = async data => {
-    await signUp(data)
-    setTimeout(() => navigate('/dashboard', { replace: true }), 3000)
+    const promise = signUp(data)
+    promise
+      .then(() => {
+        success && setTimeout(() => {
+          navigate('/dashboard', { replace: true })
+        }, 3000)
+      })
+      .catch(e => e)
   }
 
   return (
