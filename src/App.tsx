@@ -5,8 +5,10 @@ function App (): ReactElement {
   return (
     <div className='app'>
       <div className='wave' />
-      <main className='mobile-only template'>
-        <Routing />
+      <main className='mobile-only'>
+        <div className='template'>
+          <Routing />
+        </div>
       </main>
     </div>
   )

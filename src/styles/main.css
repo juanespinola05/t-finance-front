@@ -7,11 +7,22 @@
 }
 
 .mobile-only {
-  @apply min-[460px]:max-w-sm min-[460px]:aspect-[9/16] min-h-[700px] max-[460px]:min-h-screen max-[460px]:w-screen max-[460px]:rounded-none shadow-lg rounded-2xl overflow-hidden bg-white block relative;
+  @apply
+bg-white
+  shadow-lg
+  rounded-2xl
+  overflow-hidden
+  relative
+  max-[460px]:rounded-none
 }
 
 .template {
   @apply grid
+  w-screen
+  min-[460px]:max-w-sm
+  min-h-screen
+  min-[460px]:aspect-[9/16]
+  min-[460px]:min-h-[auto]
 }
 
 /* todo: change thiss */
