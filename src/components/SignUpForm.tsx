@@ -8,10 +8,9 @@ import ErrorAlert from './ErrorAlert'
 import Form from './Form'
 import Input from './Input'
 import Spinner from './Spinner'
-import SucessAlert from './SucessAlert'
 
 const SignUpForm: FC = (): ReactElement => {
-  const { auth: { loading, error, success }, signUp } = useAuth()
+  const { auth: { loading, error }, signUp } = useAuth()
   const { register, handleSubmit, formState: { errors } } = useForm<SignUpInput>()
   const navigate = useNavigate()
 
@@ -22,14 +21,6 @@ const SignUpForm: FC = (): ReactElement => {
 
   return (
     <>
-      {
-        success && (
-          <>
-            <SucessAlert message='Successfully registered' />
-            <Spinner />
-          </>
-        )
-      }
       <ErrorAlert error={error} />
       <Form
         className={loading ? 'opacity-30' : ''}
